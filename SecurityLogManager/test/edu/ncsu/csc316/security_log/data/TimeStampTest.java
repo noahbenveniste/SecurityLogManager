@@ -18,7 +18,7 @@ public class TimeStampTest {
      * 
      */
     @Test
-    void testTimeStamp() {
+    public void testTimeStamp() {
         TimeStamp ts1 = new TimeStamp(t1);
         assertEquals("04", ts1.getMonth());
         assertEquals("26", ts1.getDay());
