@@ -1,8 +1,8 @@
 package edu.ncsu.csc316.security_log.data;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.*;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 /**
  * 
