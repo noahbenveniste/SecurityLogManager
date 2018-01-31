@@ -1,7 +1,5 @@
 package edu.ncsu.csc316.security_log.util;
 
-import java.util.AbstractList;
-
 /**
  * Custom LinkedList array that doesn't allow null elements or duplicates and
  * has a capacity.
