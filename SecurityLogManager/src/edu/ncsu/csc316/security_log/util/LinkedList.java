@@ -11,7 +11,7 @@ import java.util.AbstractList;
  * 
  * @param <E> the type of elements the list contains
  */
-public class LinkedList<E> extends AbstractList<E> {
+public class LinkedList<E> {
 
     /** The first node in the list */
     private ListNode front;
@@ -124,7 +124,6 @@ public class LinkedList<E> extends AbstractList<E> {
      * @return the element that was removed
      * @throws IndexOutOfBoundsException if the index is invalid
      */
-    @Override
     public E remove(int index) {
         if (index < 0 || index >= size()) {
             throw new IndexOutOfBoundsException("Invalid index.");
@@ -166,7 +165,6 @@ public class LinkedList<E> extends AbstractList<E> {
      * @throws IllegalArgumentException if there is a duplicate element
      * @throws IndexOutOfBoundsException if the index is invalid
      */
-    @Override
     public E set(int index, E element) {
         if (index < 0 || index >= size()) {
             throw new IndexOutOfBoundsException("Invalid index.");
@@ -205,7 +203,6 @@ public class LinkedList<E> extends AbstractList<E> {
      * @return the element at the specified index
      * @throws IndexOutOfBoundsException if the index is invalid
      */
-    @Override
     public E get(int index) {
         if (index < 0 || index >= size()) {
             throw new IndexOutOfBoundsException("Invalid index.");
@@ -224,7 +221,6 @@ public class LinkedList<E> extends AbstractList<E> {
      * 
      * @return the size of the list
      */
-    @Override
     public int size() {
         return size;
     }

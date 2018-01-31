@@ -25,7 +25,7 @@ public class LogEntryList {
      * @return
      */
     public boolean add( LogEntry l ) {
-        return list.add(l);
+        return false;
     }
     
     /**
