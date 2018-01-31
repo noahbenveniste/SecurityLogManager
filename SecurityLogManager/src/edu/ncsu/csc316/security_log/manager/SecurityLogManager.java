@@ -1,10 +1,14 @@
 package edu.ncsu.csc316.security_log.manager;
 
+import edu.ncsu.csc316.security_log.util.LogEntryList;
+
 /**
  * 
  * @author Noah Benveniste
  */
 public class SecurityLogManager {
+    
+    private LogEntryList logEntryList;
     
     /**
      * 
@@ -13,7 +17,7 @@ public class SecurityLogManager {
     public SecurityLogManager( String fileName ) {
         // Create i/o reader object, returns an unsorted linked list
         
-        // Merge sort the linked list
+        // Merge sort the list
         
     }
     
