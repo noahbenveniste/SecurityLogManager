@@ -8,7 +8,7 @@ import org.junit.Test;
  * 
  * @author Noah Benveniste
  */
-class TimeStampTest {
+public class TimeStampTest {
 
     private static final String t1 = "04/26/2017 12:33:15PM";
     private static final String t2 = "11/20/2017 11:38:22AM";
