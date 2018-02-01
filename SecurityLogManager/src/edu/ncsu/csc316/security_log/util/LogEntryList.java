@@ -25,6 +25,7 @@ public class LogEntryList {
      * @return
      */
     public boolean add( LogEntry l ) {
+        // Should append logs to the end of the list for best performance
         return false;
     }
     
@@ -32,7 +33,7 @@ public class LogEntryList {
      * 
      */
     public void sort() {
-        // Use merge sort
+        // Use merge sort if linked list, quick sort if array-based
     }
     
     /**
