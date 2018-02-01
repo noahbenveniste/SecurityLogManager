@@ -10,7 +10,7 @@ import edu.ncsu.csc316.security_log.data.TimeStamp;
 public class LogEntryList {
     
     /** */
-    private LinkedList<LogEntry> list;
+    private ArrayList<LogEntry> list;
     
     /**
      * 
