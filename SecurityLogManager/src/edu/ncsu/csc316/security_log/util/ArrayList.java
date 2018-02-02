@@ -12,11 +12,11 @@ package edu.ncsu.csc316.security_log.util;
  * @author Kevin Hildner
  * 
  */
-public class ArrayList<E> {
+public class ArrayList<E extends Comparable<? super E>> {
     /**
      * The array's current size, based on the number of non-null elements present
      */
-    private static final int INIT_SIZE = 10;
+    private static final int INIT_SIZE = 1000;
     /** The underlying array for the ArrayList */
     private E[] list;
     /** The number of elements that has been placed in the array */
@@ -25,16 +25,26 @@ public class ArrayList<E> {
     private int capacity;
 
     /**
-     * Constructs an empty ArrayList of size zero with an initial capacity of ten
+     * Constructs an empty ArrayList with a desired initial max capacity.
+     * Useful if the client knows ahead of time how much space needs to
+     * be allocated to the array. Can save on runtime by not needing to
+     * generate a new array and copy the contents of the old array over
+     * when capacity is reached.
+     * @param capacity the maximum initial capacity of the array list
      */
     @SuppressWarnings("unchecked")
-    public ArrayList() {
-        Object[] o = new Object[INIT_SIZE];
+    public ArrayList(int capacity) {
         this.size = 0;
-        this.list = (E[]) o;
+        this.list = (E[]) new Comparable[capacity];
         this.capacity = list.length;
     }
 
+    /**
+     * Constructor that initializes array capacity to a default size.
+     */
+    public ArrayList() {
+        this(INIT_SIZE);
+    }
     /**
      * Adds a desired element to the ArrayList at a specified index, right-shifting
      * necessary values
@@ -183,4 +193,44 @@ public class ArrayList<E> {
     public int size() {
         return this.size;
     }
+    
+    /**
+     * 
+     * Precondition: Only functions properly if the list is maintained in sorted order
+     * @param e
+     * @return
+     */
+    public int contains(E e) {
+        if (size == 0) {
+            return -1;
+        } else {
+            return binarySearch(e, 0, size - 1);
+        }
+    }
+    
+    /**
+     * Recursive binary search utilized by contains()
+     * @param e the element to search for
+     * @return the index of the specified element if it is in the list, -1 if it isn't found.
+     */
+    private int binarySearch(E e, int low, int high) {
+        int pivot = (high + low) / 2;
+        // Base case 1: size is 0, element was not found
+        if (low > high) {
+            return -1;
+        // Base case 2: found the element at the pivot index
+        } else if (list[pivot].equals(e)) {
+            return pivot;
+        // Recursive case 1: e < list[pivot]: search sublist left of the pivot
+        } else if (e.compareTo(list[pivot]) < 0) {
+            return binarySearch(e, low, pivot - 1);
+        // Recursive case 2: e > list[pivot]: search sublist right of the pivot
+        } else if (e.compareTo(list[pivot]) > 0) {
+            return binarySearch(e, pivot + 1, high);
+        // Catch-all for unexpected failure/bugs.
+        } else {
+            throw new IllegalArgumentException("Binary search failed unexpectedly.");
+        }
+    }
+    
 }

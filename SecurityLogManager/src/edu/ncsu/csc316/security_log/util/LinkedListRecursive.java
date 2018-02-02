@@ -9,7 +9,7 @@ package edu.ncsu.csc316.security_log.util;
  * @author Brian Wu
  * @param <E> indicates that the list can work with any object or primitive type
  */
-public class LinkedListRecursive<E> {
+public class LinkedListRecursive<E extends Comparable<E>> {
 
     /** Points to the front of the list */
     private ListNode front;
@@ -104,6 +104,22 @@ public class LinkedListRecursive<E> {
             // Call method that handles recursion
         } else {
             front.add(index, e);
+        }
+    }
+    
+    /**
+     * 
+     * @param e
+     */
+    public boolean addSorted(E e) {
+        if (e == null) {
+            throw new NullPointerException("Cannot add null elements");
+        } else if (front == null){
+            front = new ListNode(e, front);
+            size++;
+            return true;
+        } else {
+            return front.addSorted(e);
         }
     }
 
@@ -220,6 +236,20 @@ public class LinkedListRecursive<E> {
     public boolean isEmpty() {
         return size == 0;
     }
+    
+    /**
+     * Converts this linked list to an array list for O(1) random element access.
+     * @return The elements in this linked list copied over to an array-based list
+     */
+    public ArrayList<E> linkedToArray() {
+        ListNode curr = this.front;
+        ArrayList<E> out = new ArrayList<E>(this.size);
+        for (int i = 0; i < this.size; i++) {
+            out.add(i, curr.data);
+            curr = curr.next;
+        }
+        return out;
+    }
 
     /**
      * A list node that composes a linked list
@@ -295,6 +325,28 @@ public class LinkedListRecursive<E> {
             } else {
                 index--;
                 next.add(index, e);
+            }
+        }
+        
+        /**
+         * 
+         * @param e
+         */
+        private boolean addSorted(E e) {
+            // Special case of adding to the front
+            if (front.data.compareTo(e) > 0) {
+                ListNode newNode = new ListNode(e, front);
+                front = newNode;
+                size++;
+                return true;
+            // If the next node's data is greater than the data being inserted or the next node is null
+            } else if (next == null || next.data.compareTo(e) > 0) {
+                ListNode newNode = new ListNode(e, next);
+                this.next = newNode;
+                size++;
+                return true;
+            } else {
+                return next.addSorted(e);
             }
         }
 
