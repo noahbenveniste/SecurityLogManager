@@ -44,6 +44,22 @@ public class LogCounter implements Comparable<LogCounter> {
      * 
      * @return
      */
+    public String getAction() {
+        return this.action;
+    }
+    
+    /**
+     * 
+     * @return
+     */
+    public String getResource() {
+        return this.resource;
+    }
+    
+    /**
+     * 
+     * @return
+     */
     public double calculatePercentage() {
         if ( totalLogEntryCount != 0 ) {
             return (double) this.freq / totalLogEntryCount * 100;
@@ -59,6 +75,15 @@ public class LogCounter implements Comparable<LogCounter> {
     public int compareTo( LogCounter other ) {
         // Sorts first by frequency (high to low), then action, then resource
         return 0;
+    }
+    
+    /**
+     * 
+     * @param other
+     * @return
+     */
+    public boolean equals( LogCounter other ) {
+        return this.getAction().equals(other.getAction()) && this.getResource().equals(other.getResource());
     }
 
 }
