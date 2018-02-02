@@ -15,8 +15,8 @@ public class LogEntryList {
     /**
      * 
      */
-    public LogEntryList() {
-        
+    public LogEntryList(ArrayList<LogEntry> list) {
+        this.list = list;
     }
     
     /**
@@ -27,13 +27,6 @@ public class LogEntryList {
     public boolean add( LogEntry l ) {
         // Should append logs to the end of the list for best performance
         return false;
-    }
-    
-    /**
-     * 
-     */
-    public void sort() {
-        // Use merge sort if linked list, quick sort if array-based
     }
     
     /**
@@ -65,4 +58,28 @@ public class LogEntryList {
         return 0;
     }
     
+    /**
+     * 
+     * @param l
+     * @return
+     */
+    public int contains( LogEntry l ) {
+        return list.contains(l);
+    }
+    
+    /**
+     * 
+     * @return
+     */
+    public int size() {
+        return list.size();
+    }
+    
+    public String getFullProfile() {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < this.list.size(); i++) {
+            sb.append(list.get(i).toString()).append("\n");
+        }
+        return sb.toString();
+    }
 }
