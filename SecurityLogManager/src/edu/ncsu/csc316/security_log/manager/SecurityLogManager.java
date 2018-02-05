@@ -84,7 +84,7 @@ public class SecurityLogManager {
      */
     public String getUserReport( String userID ) {
         StringBuilder sb = new StringBuilder("Activity Report for ");
-        String startStr = sb.append(userID).append("[\n").toString();
+        sb.append(userID).append("[\n").toString();
         String endStr = "]";
         int count = 0;
         for (int i = 0; i < logEntryList.size(); i++) {
