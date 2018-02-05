@@ -92,16 +92,4 @@ public class LogEntryList {
         return list.size();
     }
     
-    /**
-     * 
-     * @return
-     */
-    public String getFullProfile() {
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < this.list.size(); i++) {
-            sb.append(list.get(i).toString()).append("\n");
-        }
-        return sb.toString();
-    }
-    
 }

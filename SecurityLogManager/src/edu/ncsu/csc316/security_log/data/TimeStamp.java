@@ -130,13 +130,4 @@ public class TimeStamp implements Comparable<TimeStamp> {
         return true;
     }
 
-    /**
-     * 
-     */
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        //return sb.append(month).append("/").append(day).append("/").append(year).append(" ").append(hour).append(":").append(str)
-        return originalString;
-    }
-
 }
