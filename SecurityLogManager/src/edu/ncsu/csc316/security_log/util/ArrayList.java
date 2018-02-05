@@ -1,5 +1,7 @@
 package edu.ncsu.csc316.security_log.util;
 
+import java.util.Random;
+
 /**
  * A custom implemented array list class that is able to adjust size
  * automatically, elements can be added to the front, end or middle. Duplicate
@@ -16,7 +18,7 @@ public class ArrayList<E extends Comparable<? super E>> {
     /**
      * The array's current size, based on the number of non-null elements present
      */
-    private static final int INIT_SIZE = 1000;
+    private static final int INIT_SIZE = 300000;
     /** The underlying array for the ArrayList */
     private E[] list;
     /** The number of elements that has been placed in the array */
@@ -89,6 +91,14 @@ public class ArrayList<E extends Comparable<? super E>> {
         }
         // Increment the size of the ArrayList
         this.size++;
+    }
+    
+    /**
+     * 
+     * @param e
+     */
+    public void add(E e) {
+        this.add(this.size, e);
     }
     
     /**
@@ -263,6 +273,72 @@ public class ArrayList<E extends Comparable<? super E>> {
         } else {
             throw new IllegalArgumentException("Binary search failed unexpectedly.");
         }
+    }
+    
+    /**
+     * Sorts the array.
+     */
+    public void sort()  {
+        quickSort(0, this.size - 1);
+    }
+    
+    /**
+     * 
+     * Source of algorithm explanation: https://www.cp.eng.chula.ac.th/~vishnu/datastructure/QuickSort.pdf
+     * @param low
+     * @param high
+     */
+    private void quickSort(int low, int high) {
+        // Base case 1: sub array with fewer than two elements
+        if (high <= low) {
+            return;
+        // Base case 2: sub array with 2 elements
+        } else if (high - (low + 1) == 0) {
+            if (list[low].compareTo(list[high]) > 0) {
+                E temp = list[low];
+                list[low] = list[high];
+                list[high] = temp;
+            }
+            return;
+        }
+        
+        // Bounds for generating random pivot index
+        int min = low + 1;
+        int max = high;
+        
+        // Randomly generate a pivot index
+        Random rand = new Random();
+        int pivotIdx = rand.nextInt(max - min) + min;
+        
+        // Get the pivot value
+        E pivot = list[pivotIdx];
+        
+        // Swap the pivot value with the first element in the array
+        list[pivotIdx] = list[low];
+        list[low] = pivot;
+        
+        // first points to the first value that is greater than the pivot. After all comparisons are done,
+        // the value before first will correspond to a value less than the pivot
+        int first = low + 1;
+        for (int i = low + 1; i <= high; i++) {
+            if (list[i].compareTo(pivot) < 0) {
+                // Swap list[i] with list[first]
+                E temp = list[i];
+                list[i] = list[first];
+                list[first] = temp;
+                // Increment first
+                first++;
+            }
+        }
+        
+        // Swap pivot with value before first
+        list[low] = list[first - 1];
+        list[first - 1] = pivot;
+        
+        // Recursive calls
+        // pivot is located at index first - 1
+        quickSort(low, first - 1); // subarray left of and including the pivot
+        quickSort(first, high); // subarray right of the pivot
     }
     
 }

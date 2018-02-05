@@ -53,8 +53,8 @@ public class SecurityLogManagerTest {
         
         String expected = "OperationalProfile[\n" + 
                 "   sort ICD-9 Code 196: frequency: 10, percentage: 83.3%\n" + 
-                "   import office visit OV04312: frequency: 1, percentage:  8.3%\n" + 
-                "   resolve message M2964: frequency: 1, percentage:  8.3%\n" + 
+                "   import office visit OV04312: frequency: 1, percentage: 8.3%\n" + 
+                "   resolve message M2964: frequency: 1, percentage: 8.3%\n" + 
                 "]";
         
         assertEquals(expected, manager.generateOperationalProfile(GOOD_START_TIME, GOOD_END_TIME));
