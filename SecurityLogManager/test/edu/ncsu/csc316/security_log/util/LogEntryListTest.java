@@ -85,10 +85,9 @@ public class LogEntryListTest {
         10/24/2017 11:38:02AM fzalcala sort ICD-9 Code 196
         11/20/2017 11:38:22AM fzalcala sort ICD-9 Code 196
         */
+        
         assertEquals(15, logs.lastInstanceOf(new TimeStamp("11/20/2017 11:38:23AM")));
         assertEquals(15, logs.lastInstanceOf(new TimeStamp("11/20/2017 11:38:22AM")));
-        assertTrue("10/24/2017 11:38:02AM".compareTo("11/20/2017 11:38:21AM") < 0); // i
-        assertTrue("11/20/2017 11:38:22AM".compareTo("11/20/2017 11:38:21AM") > 0); // i + 1
         assertEquals(14, logs.lastInstanceOf(new TimeStamp("11/20/2017 11:38:21AM")));
     }
 }

@@ -8,7 +8,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import edu.ncsu.csc316.security_log.data.LogEntry;
-import edu.ncsu.csc316.security_log.data.TimeStamp;
 import edu.ncsu.csc316.security_log.io.SecurityLogIO;
 import edu.ncsu.csc316.security_log.util.LinkedListRecursive;
 
