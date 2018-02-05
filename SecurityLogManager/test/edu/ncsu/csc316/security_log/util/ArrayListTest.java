@@ -308,4 +308,21 @@ public class ArrayListTest {
         }
     }
     
+    /**
+     * 
+     */
+    @Test
+    public void testContains() {
+        ArrayList<Integer> ints = new ArrayList<Integer>();
+        assertEquals(0, ints.size());
+        assertTrue(ints.addSorted(1));
+        assertEquals(-1, ints.contains(-5));
+        assertEquals(-1, ints.contains(10));
+        assertTrue(ints.addSorted(5));
+        assertTrue(ints.addSorted(-1));
+        assertTrue(ints.addSorted(0));
+        assertTrue(ints.addSorted(1012));
+        assertTrue(ints.addSorted(500));
+    }
+    
 }

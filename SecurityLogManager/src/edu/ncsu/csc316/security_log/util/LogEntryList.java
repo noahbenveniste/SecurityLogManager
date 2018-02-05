@@ -21,21 +21,11 @@ public class LogEntryList {
     
     /**
      * 
-     * @param l
-     * @return
-     */
-    public boolean add( LogEntry l ) {
-        // Should append logs to the end of the list for best performance
-        return false;
-    }
-    
-    /**
-     * 
      * @param index
      * @return
      */
-    public LogEntry getLogEntry( int index ) {
-        return null;
+    public LogEntry getLogEntry(int index) {
+        return list.get(index);
     }
     
     /**
@@ -44,8 +34,24 @@ public class LogEntryList {
      * @return
      */
     public int firstInstanceOf( TimeStamp t ) {
-        // Index from the start of the list until a log entry with the specified time is found
-        return 0;
+        // Special case where the first time stamp is closest to the input time
+        if (this.list.get(0).getTimeStamp().equals(t) || this.list.get(0).getTimeStamp().compareTo(t) > 0) {
+            return 0;
+        }
+        for (int i = 1; i < this.list.size(); i++) {
+            if (this.list.get(i).getTimeStamp().equals(t)) {
+                // Check if the time at the index is equal
+                return i;
+                /* Must consider if the exact time isn't in the list. Check if the time at the index to
+                 * the left is less than t and the index itself is greater than t. This will be
+                 * the closest time to t.
+                 */
+            } else if (this.list.get(i - 1).getTimeStamp().compareTo(t) < 0 && this.list.get(i).getTimeStamp().compareTo(t) > 0) {
+                return i;
+            }
+        }
+        // Time stamp wasn't found
+        return -1;
     }
     
     /**
@@ -54,8 +60,19 @@ public class LogEntryList {
      * @return
      */
     public int lastInstanceOf( TimeStamp t ) {
-        // Index from the end of the list until a log entry with the specified time is found
-        return 0;
+        // Special case where the last time stamp is closest to the input time
+        if (this.list.get(list.size() - 1).getTimeStamp().equals(t) || this.list.get(list.size() - 1).getTimeStamp().compareTo(t) < 0) {
+            return list.size() - 1;
+        }
+        for (int i = this.list.size() - 2; i >= 0; i--) {
+            if (this.list.get(i).getTimeStamp().equals(t)) {
+                return i;
+            } else if (this.list.get(i + 1).getTimeStamp().compareTo(t) > 0 && this.list.get(i).getTimeStamp().compareTo(t) < 0) {
+                return i;
+            }
+        }
+        // Time stamp wasn't found
+        return -1;
     }
     
     /**
@@ -75,6 +92,10 @@ public class LogEntryList {
         return list.size();
     }
     
+    /**
+     * 
+     * @return
+     */
     public String getFullProfile() {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < this.list.size(); i++) {
@@ -82,4 +103,5 @@ public class LogEntryList {
         }
         return sb.toString();
     }
+    
 }

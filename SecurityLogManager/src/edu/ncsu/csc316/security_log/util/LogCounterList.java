@@ -29,6 +29,32 @@ public class LogCounterList {
     
     /**
      * 
+     * @param l
+     */
+    public void addCounter(String action, String resource) {
+        list.addSorted(new LogCounter(action, resource));
+        LogCounter.incrementTotalLogEntryCount();
+    }
+    
+    /**
+     * 
+     * @param idx
+     * @return
+     */
+    public LogCounter getCounter(int idx) {
+        return list.get(idx);
+    }
+    
+    /**
+     * 
+     * @return
+     */
+    public int size() {
+        return list.size();
+    }
+    
+    /**
+     * 
      */
     public String toString() {
         return null;

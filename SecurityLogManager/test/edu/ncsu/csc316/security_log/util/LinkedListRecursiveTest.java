@@ -437,8 +437,8 @@ public class LinkedListRecursiveTest {
         }
         assertNotNull(logs);
         assertEquals(16, logs.size());
-        System.out.println(logs.getFullProfile());
-        System.out.println(logs.size());
+        //System.out.println(logs.getFullProfile());
+        //System.out.println(logs.size());
         LogEntry frontLog = new LogEntry("fzalcala", "05/04/2015 02:09:40PM", "sort", "ICD-9 Code 196");
         LogEntry endLog = new LogEntry("fzalcala", "11/20/2017 11:38:22AM", "sort", "ICD-9 Code 196");
         LogEntry midLog = new LogEntry("quhundley", "09/21/2017 08:50:13AM", "import", "office visit OV04312");

@@ -13,6 +13,7 @@ public class TimeStampTest {
     private static final String t1 = "04/26/2017 12:33:15PM";
     private static final String t2 = "11/20/2017 11:38:22AM";
     private static final String t3 = "08/04/2016 06:57:34AM";
+    private static final String t4 = "04/26/2017 12:33:15PM";
     
     /**
      * 
@@ -27,6 +28,21 @@ public class TimeStampTest {
         assertEquals("33", ts1.getMinute());
         assertEquals("15", ts1.getSecond());
         assertFalse(ts1.isAM());
+    }
+    
+    /**
+     * 
+     */
+    @Test
+    public void testEquals() {
+        TimeStamp ts1 = new TimeStamp(t1);
+        TimeStamp ts2 = new TimeStamp(t2);
+        TimeStamp ts3 = new TimeStamp(t3);
+        TimeStamp ts4 = new TimeStamp(t4);
+        assertFalse(ts1.equals(ts2));
+        assertFalse(ts2.equals(ts3));
+        assertFalse(ts3.equals(ts4));
+        assertTrue(ts1.equals(ts4));
     }
 
 }
