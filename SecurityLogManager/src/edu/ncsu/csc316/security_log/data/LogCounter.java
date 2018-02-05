@@ -121,7 +121,7 @@ public class LogCounter implements Comparable<LogCounter> {
      */
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        return sb.append(this.action).append(" ").append(this.resource).append(": frequency: ").append(this.freq).append(", percentage: ").append(String.format("%3.1f", calculatePercentage())).append("%\n").toString();
+        return sb.append(this.action).append(" ").append(this.resource).append(": frequency: ").append(this.freq).append(", percentage: ").append(String.format("%4.1f", calculatePercentage())).append("%\n").toString();
     }
 
 }
