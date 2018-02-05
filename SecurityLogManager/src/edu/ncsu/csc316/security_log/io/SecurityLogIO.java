@@ -7,7 +7,6 @@ import java.util.Scanner;
 
 import edu.ncsu.csc316.security_log.data.LogEntry;
 import edu.ncsu.csc316.security_log.util.ArrayList;
-import edu.ncsu.csc316.security_log.util.LinkedListRecursive;
 import edu.ncsu.csc316.security_log.util.LogEntryList;
 
 /**
