@@ -287,4 +287,25 @@ public class ArrayListTest {
         assertEquals(s, "c");
         assertEquals("x", list.get(2));
     }
+
+    /**
+     * Tests addSorted()
+     */
+    @Test
+    public void testAddSorted() {
+        ArrayList<Integer> ints = new ArrayList<Integer>();
+        assertEquals(0, ints.size());
+        assertTrue(ints.addSorted(1));
+        assertTrue(ints.addSorted(5));
+        assertTrue(ints.addSorted(-1));
+        assertTrue(ints.addSorted(0));
+        assertTrue(ints.addSorted(1012));
+        assertTrue(ints.addSorted(500));
+        assertEquals(6, ints.size());
+        int[] expected = {-1, 0, 1, 5, 500, 1012};
+        for (int i = 0; i < ints.size(); i++) {
+            assertTrue(expected[i] == ints.get(i));
+        }
+    }
+    
 }

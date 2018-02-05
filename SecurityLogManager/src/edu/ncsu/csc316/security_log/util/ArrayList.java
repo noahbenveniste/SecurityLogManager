@@ -90,6 +90,40 @@ public class ArrayList<E extends Comparable<? super E>> {
         // Increment the size of the ArrayList
         this.size++;
     }
+    
+    /**
+     * 
+     * @param e
+     * @return
+     */
+    public boolean addSorted(E e) {
+        // Special case of adding to an empty list
+        if (this.size == 0) {
+            list[0] = e;
+            this.size++;
+            return true;
+        // Special case of inserting at the end of the list
+        } else if (list[this.size - 1].compareTo(e) < 0) {
+            list[size] = e;
+            this.size++;
+            return true;
+        // Check that the array hasn't reached capacity
+        } else if (this.size == this.capacity) {
+            this.growArray();
+        }
+        for (int i = 0; i < this.size; i++) {
+            if (list[i].compareTo(e) > 0) {
+                // Right shift
+                for (int j = this.size; j > i; j--) {
+                    list[j] = list[j - 1];
+                }
+                list[i] = e;
+                this.size++;
+                return true;
+            }
+        }
+        return false;
+    }
 
     /**
      * Used to grow the array if size == capacity; Doubles the capacity by default
