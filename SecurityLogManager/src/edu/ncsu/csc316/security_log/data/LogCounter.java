@@ -36,14 +36,6 @@ public class LogCounter implements Comparable<LogCounter> {
     
     /**
      * 
-     * @return
-     */
-    public static int getTotalLogEntryCount() {
-        return totalLogEntryCount;
-    }
-    
-    /**
-     * 
      */
     public void incrementFrequency() {
         this.freq++;

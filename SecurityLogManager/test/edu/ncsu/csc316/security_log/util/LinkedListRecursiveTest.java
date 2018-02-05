@@ -53,7 +53,7 @@ public class LinkedListRecursiveTest {
         String s7 = "h";
         String s8 = "i";
         
-        assertEquals(0, list.size());
+        assertTrue(list.isEmpty());
         list.add(0, s1);
         assertEquals(1, list.size());
         list.add(1, s2);

@@ -325,4 +325,16 @@ public class ArrayListTest {
         assertTrue(ints.addSorted(500));
     }
     
+    /**
+     * 
+     */
+    @Test
+    public void testGrowArray() {
+        ArrayList<Integer> ints = new ArrayList<Integer>();
+        for (int i = 0; i <= 10000; i++) {
+            ints.add(i, i);
+        }
+        assertEquals(10001, ints.size());
+    }
+    
 }

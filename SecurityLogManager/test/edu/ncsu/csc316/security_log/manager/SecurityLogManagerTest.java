@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import edu.ncsu.csc316.security_log.data.LogCounter;
+import edu.ncsu.csc316.security_log.io.SecurityLogIO;
 
 /**
  * 
@@ -43,6 +44,7 @@ public class SecurityLogManagerTest {
      */
     @Test
     public void testGenerateOperationalProfile() {
+        SecurityLogIO io = new SecurityLogIO();
         SecurityLogManager manager = new SecurityLogManager("input/activityLog_small.txt");
         // Try generating profile with bad start time
         assertEquals(NO_ACTIVITY, manager.generateOperationalProfile(BAD_START_TIME, BAD_END_TIME));

@@ -133,9 +133,7 @@ public class ArrayList<E extends Comparable<? super E>> {
         // Update capacity
         this.capacity *= 2;
         // Create a new object array of double the capacity of the current array
-        Object[] o = new Object[this.capacity];
-        // Cast to generic type
-        E[] temp = (E[]) o;
+        E[] temp = (E[]) new Comparable[capacity];
         // Assign the elements from the old array to the same index in the new array
         for (int i = 0; i < this.size(); i++) {
             temp[i] = this.list[i];

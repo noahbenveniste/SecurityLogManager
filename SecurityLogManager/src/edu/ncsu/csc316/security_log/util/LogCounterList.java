@@ -53,11 +53,4 @@ public class LogCounterList {
         return list.size();
     }
     
-    /**
-     * 
-     */
-    public String toString() {
-        return null;
-    }
-    
 }
