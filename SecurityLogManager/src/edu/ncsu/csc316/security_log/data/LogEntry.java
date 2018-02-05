@@ -64,11 +64,10 @@ public class LogEntry implements Comparable<LogEntry> {
             return this.getAction().compareTo(other.getAction());
         } else if (!this.getResource().equals(other.getResource())) {
             return this.getResource().compareTo(other.getResource());
-        } else if (!this.getUser().equals(other.getUser())) {
-            return this.getUser().compareTo(other.getUser());
         } else {
-            throw new IllegalArgumentException("Cannot have duplicate log entries."); 
+            return this.getUser().compareTo(other.getUser());
         }
+        
     }
 
     @Override
@@ -87,15 +86,6 @@ public class LogEntry implements Comparable<LogEntry> {
         if (!user.equals(other.user))
             return false;
         return true;
-    }
-
-    /**
-     * Returns all logs sorted by time stamp, action, resource and then user.
-     * @return all log entries as a string
-     */
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        return sb.append(this.timeStamp.toString()).append(" ").append(this.user).append(" ").append(this.action).append(" ").append(this.resource).toString();
     }
 
 }
