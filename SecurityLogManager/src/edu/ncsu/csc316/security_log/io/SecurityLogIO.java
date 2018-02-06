@@ -24,26 +24,18 @@ public class SecurityLogIO {
      * 
      * @param fileName
      * @return
-     * @throws FileNotFoundException
+     * @throws IOException 
      */
-    public LogEntryList readLogEntriesFromFile( String fileName ) throws FileNotFoundException {
-        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
-            ArrayList<LogEntry> list = reader.lines() // add .parallel() to try multi threaded (could be faster)
-            .skip(1) // Skips first line
-            .map(this::readLogEntry)
-            .collect(ArrayList<LogEntry>::new, ArrayList<LogEntry>::add, (a, b) -> {
-                for (int i = 0; i < b.size(); i++) {
-                    a.add(b.get(i));
-                }
-            });
-            list.sort();
-            return new LogEntryList(list);
-        } catch (IOException e1) {
-            e1.printStackTrace();
-            throw new IllegalArgumentException(e1.getMessage());
-        } catch (IllegalArgumentException e2) {
-            throw new IllegalArgumentException(e2.getMessage());
-        }
+    public LogEntryList readLogEntriesFromFile( String fileName ) throws IOException {
+        BufferedReader reader = new BufferedReader(new FileReader(fileName));
+        ArrayList<LogEntry> list = reader.lines() // add .parallel() to try multi threaded (could be faster)
+        .skip(1) // Skips first line
+        .map(this::readLogEntry)
+        .collect(ArrayList<LogEntry>::new, ArrayList<LogEntry>::add, ArrayList<LogEntry>::addAll);
+        reader.close();
+        list.sort();
+        return new LogEntryList(list);
+        
         // Create scanner object
 //        Scanner fileReader = new Scanner(new FileInputStream(fileName));
         

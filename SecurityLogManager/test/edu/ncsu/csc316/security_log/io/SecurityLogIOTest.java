@@ -3,6 +3,7 @@ package edu.ncsu.csc316.security_log.io;
 import static org.junit.Assert.*;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 
 import org.junit.Test;
 
@@ -16,10 +17,11 @@ import edu.ncsu.csc316.security_log.util.LogEntryList;
 public class SecurityLogIOTest {
 
     /**
+     * @throws IOException 
      * 
      */
     @Test
-    public void testReadLogEntriesFromFile() {
+    public void testReadLogEntriesFromFile() throws IOException {
         String fileName = "input/activityLog_small.txt";
         LogEntryList logs = null;
         SecurityLogIO io = new SecurityLogIO();

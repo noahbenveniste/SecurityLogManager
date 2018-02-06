@@ -341,4 +341,14 @@ public class ArrayList<E extends Comparable<? super E>> {
         quickSort(first, high); // subarray right of the pivot
     }
     
+    /**
+     * 
+     * @param in
+     */
+    public void addAll(ArrayList<E> in) {
+        for (int i = 0; i < in.size(); i++) {
+            this.add(in.get(i));
+        }
+    }
+    
 }

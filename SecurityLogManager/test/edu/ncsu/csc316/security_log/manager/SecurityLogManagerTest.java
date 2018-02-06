@@ -2,6 +2,8 @@ package edu.ncsu.csc316.security_log.manager;
 
 import static org.junit.Assert.*;
 
+import java.io.IOException;
+
 import org.junit.Test;
 
 import edu.ncsu.csc316.security_log.io.SecurityLogIO;
@@ -40,9 +42,10 @@ public class SecurityLogManagerTest {
     
     /**
      * Tests generateOperationalProfile()
+     * @throws IOException 
      */
     @Test
-    public void testGenerateOperationalProfile() {
+    public void testGenerateOperationalProfile() throws IOException {
         SecurityLogIO io = new SecurityLogIO();
         assertNotNull(io);
         SecurityLogManager manager = new SecurityLogManager("input/activityLog_small.txt");
@@ -61,10 +64,11 @@ public class SecurityLogManagerTest {
     }
     
     /**
+     * @throws IOException 
      * 
      */
     @Test
-    public void testGetUserReport() {
+    public void testGetUserReport() throws IOException {
         SecurityLogManager manager = new SecurityLogManager("input/activityLog_small.txt");
         
         String expected = "Activity Report for fzalcala[\n" + 

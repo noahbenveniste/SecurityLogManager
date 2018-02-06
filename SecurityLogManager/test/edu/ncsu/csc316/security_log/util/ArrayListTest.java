@@ -420,4 +420,19 @@ public class ArrayListTest {
         assertTrue(a.size() == 0);
     }
     
+    /**
+     * 
+     */
+    @Test
+    public void testAddAll() {
+        ArrayList<Integer> a = new ArrayList<Integer>();
+        ArrayList<Integer> b = new ArrayList<Integer>();
+        a.add(1);
+        b.add(2);
+        a.addAll(b);
+        assertEquals(2, a.size());
+        assertTrue(1 == a.get(0));
+        assertTrue(2 == a.get(1));
+    }
+    
 }

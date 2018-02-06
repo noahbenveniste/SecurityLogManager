@@ -1,6 +1,7 @@
 package edu.ncsu.csc316.security_log.manager;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 
 import edu.ncsu.csc316.security_log.data.LogCounter;
 import edu.ncsu.csc316.security_log.data.LogEntry;
@@ -22,8 +23,9 @@ public class SecurityLogManager {
     /**
      * 
      * @param fileName
+     * @throws IOException 
      */
-    public SecurityLogManager(String fileName) {
+    public SecurityLogManager(String fileName) throws IOException {
         io = new SecurityLogIO();
         try {
             this.logEntryList = io.readLogEntriesFromFile(fileName);
