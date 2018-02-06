@@ -2,6 +2,9 @@ package edu.ncsu.csc316.security_log.util;
 
 import static org.junit.Assert.*;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+
 import org.junit.Test;
 
 /**
@@ -388,6 +391,33 @@ public class ArrayListTest {
         //Test sorting array with duplicates
         list = new ArrayList<String>();
         
+    }
+    
+    /**
+     * 
+     */
+    @Test
+    public void testGrowArray() {
+        ArrayList<Integer> a = new ArrayList<Integer>();
+        Class c = a.getClass();
+        Method method = null;
+        try {
+            method = c.getDeclaredMethod("growArray", null);
+        } catch (NoSuchMethodException | SecurityException e) {
+            fail(e.getMessage());
+        }
+        assertNotNull(method);
+        method.setAccessible(true);
+        try {
+            method.invoke(a, null);
+        } catch (IllegalAccessException e) {
+            fail(e.getMessage());
+        } catch (IllegalArgumentException e) {
+            fail(e.getMessage());
+        } catch (InvocationTargetException e) {
+            fail(e.getMessage());
+        }
+        assertTrue(a.size() == 0);
     }
     
 }
