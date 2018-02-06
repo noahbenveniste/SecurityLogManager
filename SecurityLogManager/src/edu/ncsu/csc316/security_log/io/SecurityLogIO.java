@@ -42,7 +42,7 @@ public class SecurityLogIO {
         // Close scanner
         fileReader.close();
         // Sort the arraylist. Uses quick sort for O(nlogn)
-        logs.sort();
+        // logs.sort();
         // Use the arraylist to construct a log entry list, return that
         return new LogEntryList(logs);
     }
