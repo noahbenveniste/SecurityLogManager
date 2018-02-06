@@ -32,7 +32,7 @@ public class LogCounterList {
      * @param l
      */
     public void addCounter(String action, String resource) {
-        list.addSorted(new LogCounter(action, resource));
+        list.add(new LogCounter(action, resource));
         LogCounter.incrementTotalLogEntryCount();
     }
     
@@ -51,6 +51,10 @@ public class LogCounterList {
      */
     public int size() {
         return list.size();
+    }
+    
+    public void sortCounters() {
+        this.list.sort();
     }
     
 }
