@@ -61,6 +61,7 @@ public class SecurityLogManagerTest {
                 "]";
         
         assertEquals(expected, manager.generateOperationalProfile(GOOD_START_TIME, GOOD_END_TIME));
+        
     }
     
     /**
@@ -72,17 +73,17 @@ public class SecurityLogManagerTest {
         SecurityLogManager manager = new SecurityLogManager("input/activityLog_small.txt");
         
         String expected = "Activity Report for fzalcala[\n" + 
-                "   05/04/2015 02:09:40PM - sortICD-9 Code 196\n" + 
-                "   06/09/2015 06:26:04AM - sortICD-9 Code 196\n" + 
-                "   10/04/2015 12:17:49PM - sortICD-9 Code 196\n" + 
-                "   08/04/2016 06:57:34AM - resolvemessage M2964\n" + 
-                "   10/07/2016 07:08:47AM - sortICD-9 Code 196\n" + 
-                "   04/26/2017 12:33:15PM - sortICD-9 Code 196\n" + 
-                "   07/03/2017 12:36:05AM - sortICD-9 Code 196\n" + 
-                "   08/10/2017 05:10:54AM - sortICD-9 Code 196\n" + 
-                "   08/26/2017 08:15:06AM - sortICD-9 Code 196\n" + 
-                "   10/24/2017 11:38:02AM - sortICD-9 Code 196\n" + 
-                "   11/20/2017 11:38:22AM - sortICD-9 Code 196\n" + 
+                "   05/04/2015 02:09:40PM - sort ICD-9 Code 196\n" + 
+                "   06/09/2015 06:26:04AM - sort ICD-9 Code 196\n" + 
+                "   10/04/2015 12:17:49PM - sort ICD-9 Code 196\n" + 
+                "   08/04/2016 06:57:34AM - resolve message M2964\n" + 
+                "   10/07/2016 07:08:47AM - sort ICD-9 Code 196\n" + 
+                "   04/26/2017 12:33:15PM - sort ICD-9 Code 196\n" + 
+                "   07/03/2017 12:36:05AM - sort ICD-9 Code 196\n" + 
+                "   08/10/2017 05:10:54AM - sort ICD-9 Code 196\n" + 
+                "   08/26/2017 08:15:06AM - sort ICD-9 Code 196\n" + 
+                "   10/24/2017 11:38:02AM - sort ICD-9 Code 196\n" + 
+                "   11/20/2017 11:38:22AM - sort ICD-9 Code 196\n" + 
                 "]";
         
         assertEquals(expected, manager.getUserReport("fzalcala"));

@@ -70,7 +70,7 @@ public class SecurityLogManager {
                 logCounterList.getCounter(counterIdx).incrementFrequency();
             }
         }
-        
+        logCounterList.sortCounters();
         // Go through the log counter list, get the strings, build the output string
         sb.append(startStr);
         for (int i = 0; i < logCounterList.size(); i++) {
@@ -95,7 +95,7 @@ public class SecurityLogManager {
         for (int i = 0; i < logEntryList.size(); i++) {
             LogEntry current = logEntryList.getLogEntry(i);
             if (current.getUser().equals(userID)) {
-                sb.append("   ").append(current.getTimeStamp().getOriginalString()).append(" - ").append(current.getAction()).append(current.getResource()).append("\n");
+                sb.append("   ").append(current.getTimeStamp().getOriginalString()).append(" - ").append(current.getAction()).append(" ").append(current.getResource()).append("\n");
                 count++;
             }
         }
