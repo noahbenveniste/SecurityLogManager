@@ -40,7 +40,7 @@ public class TimeStamp implements Comparable<TimeStamp> {
         // Get the hour in 24 hour format. If the string ends with AM and is 12:xx, subtract
         // 12 from the hour. If the string ends with PM and is NOT 12:xx, add 12.
         int hr = Integer.parseInt(s.substring(11, 13));
-        String amPm = s.substring(17);
+        String amPm = s.substring(19);
         if (amPm.equals("AM") && hr == 12) {
             hr -= 12;
         } else if (amPm.equals("PM") && hr != 12) {
