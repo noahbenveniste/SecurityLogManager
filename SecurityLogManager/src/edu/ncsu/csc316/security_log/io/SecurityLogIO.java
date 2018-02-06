@@ -7,6 +7,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
+import java.util.StringTokenizer;
 
 import edu.ncsu.csc316.security_log.data.LogEntry;
 import edu.ncsu.csc316.security_log.util.ArrayList;
@@ -67,30 +68,32 @@ public class SecurityLogIO {
      * @return
      */
     private LogEntry readLogEntry( String line ) {
-        Scanner s = new Scanner(line);
-        s.useDelimiter(",");
-        
+//        Scanner s = new Scanner(line);
+//        s.useDelimiter(",");
         String user = null;
         String timeStamp = null;
         String action = null;
         String resource = null;
         
+        StringTokenizer tokenizer = new StringTokenizer(line, ",");
+        
         LogEntry log = null;
         
         try {
             
-            user = s.next().trim();
-            timeStamp = s.next().trim();
-            action = s.next().trim();
-            resource = s.next().trim();
-            
-            log = new LogEntry( user, timeStamp, action, resource );
+            user = tokenizer.nextToken();
+            timeStamp = tokenizer.nextToken();
+            action = tokenizer.nextToken();
+            resource = tokenizer.nextToken();
+
+            // timeStamp, action and resource all have an extra leading whitespace. Manually truncate it.
+            log = new LogEntry(user, timeStamp.substring(1), action.substring(1), resource.substring(1));
             
         } catch (NoSuchElementException e) {
-            s.close();
+            // s.close();
             throw new IllegalArgumentException();
         }
-        s.close();
+        //s.close();
         
         return log;
     }
