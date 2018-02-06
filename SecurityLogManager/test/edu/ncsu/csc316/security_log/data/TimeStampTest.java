@@ -14,8 +14,6 @@ public class TimeStampTest {
     private static final String t2 = "11/20/2017 11:38:22AM";
     private static final String t3 = "08/04/2016 06:57:34AM";
     private static final String t4 = "04/26/2017 12:33:15PM";
-    private static final String t5 = "03/30/2015 12:00:00AM";
-    private static final String t6 = "03/30/2015 12:10:01AM";
     
     /**
      * 
@@ -24,7 +22,7 @@ public class TimeStampTest {
     public void testTimeStamp() {
         TimeStamp ts1 = new TimeStamp(t1);
         assertEquals(20170426123315L, ts1.getVal());
-        TimeStamp t = new TimeStamp("12/13/2016 09:39:33PM");
+
         //TimeStamp ts5 = new TimeStamp(t5);
 //        assertEquals("04", ts1.getMonth());
 //        assertEquals("26", ts1.getDay());

@@ -77,7 +77,6 @@ public class SecurityLogManager {
             sb.append("   ").append(logCounterList.getCounter(i).toString());
         }
         sb.append(endStr);
-        System.out.println(sb.toString());
         return sb.toString();
     }
     
@@ -99,10 +98,10 @@ public class SecurityLogManager {
                 count++;
             }
         }
-        sb.append(endStr);
         if (count == 0) {
             sb.append("   No activity was recorded.\n");
         }
+        sb.append(endStr);
         return sb.toString();
     }
     
