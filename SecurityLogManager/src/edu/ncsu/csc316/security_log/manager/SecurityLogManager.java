@@ -101,7 +101,7 @@ public class SecurityLogManager {
         }
         sb.append(endStr);
         if (count == 0) {
-            sb.append("   No activity was recorded.\n");
+            sb.append("  No activity was recorded.\n");
         }
         return sb.toString();
     }
