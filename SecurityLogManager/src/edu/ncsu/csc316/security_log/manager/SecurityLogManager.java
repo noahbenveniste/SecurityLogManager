@@ -50,14 +50,14 @@ public class SecurityLogManager {
         StringBuilder sb = new StringBuilder();
         String startStr = "OperationalProfile[\n";
         String endStr = "]";
-        
+        sb.append(startStr);
         // Get indices for start time and end time
         int startIdx = logEntryList.firstInstanceOf(new TimeStamp(startTime));
         int endIdx = logEntryList.lastInstanceOf(new TimeStamp(endTime));
         
         // If either index is -1, the time isn't in range
         if (startIdx == -1 || endIdx == -1) {
-            return "No activity was recorded.";
+            return sb.append("   No activity was recorded.\n").append(endStr).toString();
         }
         
         // Loop through the log entries creating/incrementing log counters when necessary
@@ -72,7 +72,7 @@ public class SecurityLogManager {
         }
         logCounterList.sortCounters();
         // Go through the log counter list, get the strings, build the output string
-        sb.append(startStr);
+        
         for (int i = 0; i < logCounterList.size(); i++) {
             sb.append("   ").append(logCounterList.getCounter(i).toString());
         }
@@ -101,7 +101,7 @@ public class SecurityLogManager {
         }
         sb.append(endStr);
         if (count == 0) {
-            sb.append("  No activity was recorded.\n");
+            sb.append("   No activity was recorded.\n");
         }
         return sb.toString();
     }

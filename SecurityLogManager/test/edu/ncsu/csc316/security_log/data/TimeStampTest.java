@@ -24,6 +24,7 @@ public class TimeStampTest {
     public void testTimeStamp() {
         TimeStamp ts1 = new TimeStamp(t1);
         assertEquals(20170426123315L, ts1.getVal());
+        TimeStamp t = new TimeStamp("12/13/2016 09:39:33PM");
         //TimeStamp ts5 = new TimeStamp(t5);
 //        assertEquals("04", ts1.getMonth());
 //        assertEquals("26", ts1.getDay());

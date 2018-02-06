@@ -34,7 +34,7 @@ public class SecurityLogManagerTest {
     11/20/2017 11:38:22AM fzalcala sort ICD-9 Code 196
     */
     
-    private static final String NO_ACTIVITY = "No activity was recorded.";
+    private static final String NO_ACTIVITY = "OperationalProfile[\n   No activity was recorded.\n]";
     private static final String BAD_START_TIME = "11/20/2017 11:38:23AM";
     private static final String BAD_END_TIME = "05/04/2015 02:09:39PM";
     private static final String GOOD_START_TIME = "07/18/2015 07:57:41PM";
@@ -46,6 +46,9 @@ public class SecurityLogManagerTest {
      */
     @Test
     public void testGenerateOperationalProfile() throws IOException {
+//        SecurityLogManager m2 = new SecurityLogManager("input/activityLog_medium.txt");
+//        System.out.println(m2.generateOperationalProfile("01/01/1980 12:00:00AM", "01/01/2020 12:00:00AM"));
+        
         SecurityLogIO io = new SecurityLogIO();
         assertNotNull(io);
         SecurityLogManager manager = new SecurityLogManager("input/activityLog_small.txt");
