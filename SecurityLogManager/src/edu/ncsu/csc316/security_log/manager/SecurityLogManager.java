@@ -25,11 +25,11 @@ public class SecurityLogManager {
      * @param fileName
      * @throws IOException 
      */
-    public SecurityLogManager(String fileName) throws IOException {
+    public SecurityLogManager(String fileName) {
         io = new SecurityLogIO();
         try {
             this.logEntryList = io.readLogEntriesFromFile(fileName);
-        } catch (FileNotFoundException e) {
+        } catch (IOException e) {
             throw new IllegalArgumentException(e.getMessage());
         }
     }
