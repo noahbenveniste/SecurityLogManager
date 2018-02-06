@@ -77,6 +77,7 @@ public class SecurityLogManager {
             sb.append("   ").append(logCounterList.getCounter(i).toString());
         }
         sb.append(endStr);
+        System.out.println(sb.toString());
         return sb.toString();
     }
     
