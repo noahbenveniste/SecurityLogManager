@@ -1,7 +1,10 @@
 package edu.ncsu.csc316.security_log.io;
 
+import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
@@ -16,35 +19,54 @@ import edu.ncsu.csc316.security_log.util.LogEntryList;
  * @author Noah Benveniste
  */
 public class SecurityLogIO {
-
+    
     /**
      * 
      * @param fileName
      * @return
      * @throws FileNotFoundException
      */
-    public static LogEntryList readLogEntriesFromFile( String fileName ) throws FileNotFoundException {
-        // Create scanner object
-        Scanner fileReader = new Scanner(new FileInputStream(fileName));
-        ArrayList<LogEntry> logs = new ArrayList<LogEntry>();
-        // Get header line of file, throw away
-        fileReader.nextLine();
-        while (fileReader.hasNextLine()) {
-            try {
-                // Try to parse a line of the file and generate a LogEntry object
-                LogEntry log = readLogEntry(fileReader.nextLine());
-                // Append the element to the list
-                logs.add(log);
-            } catch (IllegalArgumentException e) {
-                // Skip the line if it can't be read
-            }
+    public LogEntryList readLogEntriesFromFile( String fileName ) throws FileNotFoundException {
+        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
+            ArrayList<LogEntry> list = reader.lines() // add .parallel() to try multi threaded (could be faster)
+            .skip(1) // Skips first line
+            .map(this::readLogEntry)
+            .collect(ArrayList<LogEntry>::new, ArrayList<LogEntry>::add, (a, b) -> {
+                for (int i = 0; i < b.size(); i++) {
+                    a.add(b.get(i));
+                }
+            });
+            list.sort();
+            return new LogEntryList(list);
+        } catch (IOException e1) {
+            e1.printStackTrace();
+            throw new IllegalArgumentException(e1.getMessage());
+        } catch (IllegalArgumentException e2) {
+            throw new IllegalArgumentException(e2.getMessage());
         }
-        // Close scanner
-        fileReader.close();
-        // Sort the arraylist. Uses quick sort for O(nlogn)
-        // logs.sort();
-        // Use the arraylist to construct a log entry list, return that
-        return new LogEntryList(logs);
+        // Create scanner object
+//        Scanner fileReader = new Scanner(new FileInputStream(fileName));
+        
+//        // Get header line of file, throw away
+//        fileReader.nextLine();
+//        while (fileReader.hasNextLine()) {
+//            try {
+//                // Try to parse a line of the file and generate a LogEntry object
+//                LogEntry log = readLogEntry(fileReader.nextLine());
+//                // Append the element to the list
+//                logs.add(log);
+//            } catch (IllegalArgumentException e) {
+//                // Skip the line if it can't be read
+//            }
+//        }
+//        // Close scanner
+//        fileReader.close();
+//        // Sort the arraylist. Uses quick sort for O(nlogn)
+//        // logs.sort();
+//        // Use the arraylist to construct a log entry list, return that
+        
+        //logs.sort();
+        //return new LogEntryList(this.logs);
     }
     
     /**
@@ -52,7 +74,7 @@ public class SecurityLogIO {
      * @param line
      * @return
      */
-    private static LogEntry readLogEntry( String line ) {
+    private LogEntry readLogEntry( String line ) {
         Scanner s = new Scanner(line);
         s.useDelimiter(",");
         
@@ -77,6 +99,7 @@ public class SecurityLogIO {
             throw new IllegalArgumentException();
         }
         s.close();
+        
         return log;
     }
     

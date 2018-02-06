@@ -17,14 +17,16 @@ public class SecurityLogManager {
     
     private LogEntryList logEntryList;
     private LogCounterList logCounterList;
+    private SecurityLogIO io;
     
     /**
      * 
      * @param fileName
      */
     public SecurityLogManager(String fileName) {
+        io = new SecurityLogIO();
         try {
-            this.logEntryList = SecurityLogIO.readLogEntriesFromFile(fileName);
+            this.logEntryList = io.readLogEntriesFromFile(fileName);
         } catch (FileNotFoundException e) {
             throw new IllegalArgumentException(e.getMessage());
         }

@@ -23,8 +23,9 @@ public class LogEntryListTest {
      */
     @Before
     public void setUp() {
+        SecurityLogIO io = new SecurityLogIO();
         try {
-            logs = SecurityLogIO.readLogEntriesFromFile("input/activityLog_small.txt");
+            logs = io.readLogEntriesFromFile("input/activityLog_small.txt");
         } catch (FileNotFoundException e) {
             System.out.println(e.getMessage());
             fail();
