@@ -28,7 +28,7 @@ public class SecurityLogIO {
      */
     public LogEntryList readLogEntriesFromFile( String fileName ) throws IOException {
         BufferedReader reader = new BufferedReader(new FileReader(fileName));
-        ArrayList<LogEntry> list = reader.lines().parallel() // to try multi threaded (could be faster)
+        ArrayList<LogEntry> list = reader.lines() // add .parallel() to try multi threaded (could be faster)
         .skip(1) // Skips first line
         .map(this::readLogEntry)
         .collect(ArrayList<LogEntry>::new, ArrayList<LogEntry>::add, ArrayList<LogEntry>::addAll);
