@@ -1,5 +1,6 @@
 package edu.ncsu.csc316.security_log.util;
 
+import java.util.Comparator;
 import java.util.Random;
 
 /**
@@ -18,7 +19,7 @@ public class ArrayList<E extends Comparable<? super E>> {
     /**
      * The array's current size, based on the number of non-null elements present
      */
-    private static final int INIT_SIZE = 1000;
+    private static final int INIT_SIZE = 100000;
     /** The underlying array for the ArrayList */
     private E[] list;
     /** The number of elements that has been placed in the array */
@@ -242,11 +243,11 @@ public class ArrayList<E extends Comparable<? super E>> {
      * @param e
      * @return
      */
-    public int contains(E e) {
+    public int contains(E e, Comparator<? super E> c) {
         if (size == 0) {
             return -1;
         } else {
-            return binarySearch(e, 0, size - 1);
+            return binarySearch(e, 0, size - 1, c);
         }
     }
     
@@ -255,46 +256,47 @@ public class ArrayList<E extends Comparable<? super E>> {
      * @param e the element to search for
      * @return the index of the specified element if it is in the list, -1 if it isn't found.
      */
-    private int binarySearch(E e, int low, int high) {
+    private int binarySearch(E e, int low, int high, Comparator<? super E> c) {
         int pivot = (high + low) / 2;
         // Base case 1: size is 0, element was not found
         if (low > high) {
             return -1;
         // Base case 2: found the element at the pivot index
-        } else if (list[pivot].equals(e)) {
+        } else if (c.compare(e, list[pivot]) == 0) {
             return pivot;
         // Recursive case 1: e < list[pivot]: search sublist left of the pivot
-        } else if (e.compareTo(list[pivot]) < 0) {
-            return binarySearch(e, low, pivot - 1);
+        } else if (c.compare(e, list[pivot]) < 0) {
+            return binarySearch(e, low, pivot - 1, c);
         // Recursive case 2: e > list[pivot]: search sublist right of the pivot
-        } else if (e.compareTo(list[pivot]) > 0) {
-            return binarySearch(e, pivot + 1, high);
-        // Catch-all for unexpected failure/bugs.
-        } else {
-            throw new IllegalArgumentException("Binary search failed unexpectedly.");
+        } else if (c.compare(e,  list[pivot]) > 0) {
+            return binarySearch(e, pivot + 1, high, c);
         }
+        // Catch-all for unexpected failure/bugs.
+        return -1;
     }
     
     /**
      * Sorts the array.
+     * @param <T>
      */
-    public void sort()  {
-        quickSort(0, this.size - 1);
+    public void sort(Comparator<? super E> c)  {
+        quickSort(0, this.size - 1, c);
     }
     
     /**
      * 
      * Source of algorithm explanation: https://www.cp.eng.chula.ac.th/~vishnu/datastructure/QuickSort.pdf
+     * @param <T>
      * @param low
      * @param high
      */
-    private void quickSort(int low, int high) {
+    private void quickSort(int low, int high, Comparator<? super E> c) {
         // Base case 1: sub array with fewer than two elements
         if (high <= low) {
             return;
         // Base case 2: sub array with 2 elements
         } else if (high - (low + 1) == 0) {
-            if (list[low].compareTo(list[high]) > 0) {
+            if (c.compare(list[low], list[high]) > 0) {
                 E temp = list[low];
                 list[low] = list[high];
                 list[high] = temp;
@@ -321,7 +323,7 @@ public class ArrayList<E extends Comparable<? super E>> {
         // the value before first will correspond to a value less than the pivot
         int first = low + 1;
         for (int i = low + 1; i <= high; i++) {
-            if (list[i].compareTo(pivot) < 0) {
+            if (c.compare(list[i], (pivot)) < 0) {
                 // Swap list[i] with list[first]
                 E temp = list[i];
                 list[i] = list[first];
@@ -337,8 +339,8 @@ public class ArrayList<E extends Comparable<? super E>> {
         
         // Recursive calls
         // pivot is located at index first - 1
-        quickSort(low, first - 1); // subarray left of and including the pivot
-        quickSort(first, high); // subarray right of the pivot
+        quickSort(low, first - 1, c); // subarray left of and including the pivot
+        quickSort(first, high, c); // subarray right of the pivot
     }
     
     /**

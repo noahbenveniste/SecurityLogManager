@@ -34,7 +34,6 @@ public class SecurityLogIO {
         .map(this::readLogEntry)
         .collect(ArrayList<LogEntry>::new, ArrayList<LogEntry>::add, ArrayList<LogEntry>::addAll);
         reader.close();
-        list.sort();
         return new LogEntryList(list);
         
         // Create scanner object

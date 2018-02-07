@@ -62,7 +62,7 @@ public class SecurityLogManagerTest {
                 "   import office visit OV04312: frequency: 1, percentage: 8.3%\n" + 
                 "   resolve message M2964: frequency: 1, percentage: 8.3%\n" + 
                 "]";
-        
+        manager.generateOperationalProfile(GOOD_START_TIME, GOOD_END_TIME);
         assertEquals(expected, manager.generateOperationalProfile(GOOD_START_TIME, GOOD_END_TIME));
         
     }
@@ -88,7 +88,6 @@ public class SecurityLogManagerTest {
                 "   10/24/2017 11:38:02AM - sort ICD-9 Code 196\n" + 
                 "   11/20/2017 11:38:22AM - sort ICD-9 Code 196\n" + 
                 "]";
-        
         assertEquals(expected, manager.getUserReport("fzalcala"));
     }
 
