@@ -4,7 +4,6 @@ import static org.junit.Assert.*;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.Comparator;
 
 import org.junit.Test;
 
@@ -317,46 +316,16 @@ public class ArrayListTest {
      */
     @Test
     public void testContains() {
-        
-        /**
-         * Inner class for testing sort method in arraylist that takes
-         * a comparator as an argument.
-         * 
-         * @author Noah Benveniste
-         *
-         * @param <T>
-         */
-        class IntComparator<T> implements Comparator<T> {
-
-            @Override
-            public int compare(T o1, T o2) {
-                int i1 = (Integer) o1;
-                int i2 = (Integer) o2;
-                return i1 - i2;
-            }
-            
-        }
-        
         ArrayList<Integer> ints = new ArrayList<Integer>();
-        IntComparator<Integer> x = new IntComparator<Integer>();
-        
         assertEquals(0, ints.size());
         assertTrue(ints.addSorted(1));
-        assertEquals(-1, ints.contains(-5, x));
-        assertEquals(-1, ints.contains(10, x));
+        assertEquals(-1, ints.contains(-5));
+        assertEquals(-1, ints.contains(10));
         assertTrue(ints.addSorted(5));
         assertTrue(ints.addSorted(-1));
         assertTrue(ints.addSorted(0));
         assertTrue(ints.addSorted(1012));
         assertTrue(ints.addSorted(500));
-        assertEquals(0, ints.contains(-1, x));
-        assertEquals(1, ints.contains(0, x));
-        assertEquals(2, ints.contains(1, x));
-        assertEquals(3, ints.contains(5, x));
-        assertEquals(4, ints.contains(500, x));
-        assertEquals(5, ints.contains(1012, x));
-        assertEquals(-1, ints.contains(-5, x));
-        assertEquals(-1, ints.contains(100000, x));
     }
     
     /**
@@ -364,29 +333,8 @@ public class ArrayListTest {
      */
     @Test
     public void testSort() {
-        
-        /**
-         * Inner class for testing sort method in arraylist that takes
-         * a comparator as an argument.
-         * 
-         * @author Noah Benveniste
-         *
-         * @param <T>
-         */
-        class IntComparator<T> implements Comparator<T> {
-
-            @Override
-            public int compare(T o1, T o2) {
-                int i1 = (Integer) o1;
-                int i2 = (Integer) o2;
-                return i1 - i2;
-            }
-            
-        }
-        
         // Test sorting arrays with random ordering or things
         ArrayList<Integer> ints = new ArrayList<Integer>();
-        IntComparator<Integer> x = new IntComparator<Integer>();
         ints.add(9);
         ints.add(1);
         ints.add(5);
@@ -398,34 +346,14 @@ public class ArrayListTest {
         ints.add(3);
         ints.add(8);
         
-        ints.sort(x);
+        ints.sort();
         
         int[] expected1 = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
         for (int i = 0; i < expected1.length; i++) {
             assertTrue(expected1[i] == ints.get(i));
         }
         
-        /**
-         * Inner class for testing sort method in arraylist that takes
-         * a comparator as an argument.
-         * 
-         * @author Noah Benveniste
-         *
-         * @param <T>
-         */
-        class StringComparator<T> implements Comparator<T> {
-
-            @Override
-            public int compare(T o1, T o2) {
-                String s1 = (String) o1;
-                String s2 = (String) o2;
-                return s1.compareTo(s2);
-            }
-            
-        }
-        
         ArrayList<String> list = new ArrayList<String>();
-        StringComparator<String> c = new StringComparator<String>();
         list.add("q");
         list.add("g");
         list.add("t");
@@ -453,7 +381,7 @@ public class ArrayListTest {
         list.add("x");
         list.add("b");
         
-        list.sort(c);
+        list.sort();
         
         String[] expected2 = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};
         for (int i = 0; i < expected2.length; i++) {

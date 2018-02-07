@@ -88,9 +88,9 @@ public class LogEntry implements Comparable<LogEntry> {
         return true;
     }
     
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        return sb.append("   ").append(this.getTimeStamp().getOriginalString()).append(" - ").append(this.getAction()).append(" ").append(this.getResource()).append("\n").toString();
-    }
+//    public String toString() {
+//        StringBuilder sb = new StringBuilder(this.user);
+//        return sb.append(" ").append(timeStamp.getOriginalString()).append(" ").append(this.action).append(" ").append(this.resource).toString();
+//    }
 
 }

@@ -90,17 +90,16 @@ public class LogCounter implements Comparable<LogCounter> {
      */
     @Override
     public int compareTo( LogCounter other ) {
-//        // Sorts first by frequency (high to low), then action, then resource
-//        if (this.freq != other.getFrequency()) {
-//            return other.getFrequency() - this.freq;
-//        } else if (!this.action.equals(other.getAction())) {
-//            return this.action.compareTo(other.getAction());
-//        } else if (!this.resource.equals(other.getResource())) {
-//            return this.resource.compareTo(other.getResource());
-//        } else {
-//            return 0;
-//        }
-        return 0;
+        // Sorts first by frequency (high to low), then action, then resource
+        if (this.freq != other.getFrequency()) {
+            return other.getFrequency() - this.freq;
+        } else if (!this.action.equals(other.getAction())) {
+            return this.action.compareTo(other.getAction());
+        } else if (!this.resource.equals(other.getResource())) {
+            return this.resource.compareTo(other.getResource());
+        } else {
+            return 0;
+        }
     }
     
     /**
