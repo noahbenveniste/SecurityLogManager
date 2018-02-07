@@ -23,9 +23,9 @@ public class SecurityLogManager {
     private SecurityLogIO io;
     
     /**
-     * 
-     * @param fileName
-     * @throws IOException 
+     * Constructs the SecurityLogManager
+     * @param fileName the name of the file to read
+     * @throws IOException if the file is not formatted properly
      */
     public SecurityLogManager(String fileName) {
         io = new SecurityLogIO();
@@ -37,9 +37,9 @@ public class SecurityLogManager {
     }
     
     /**
-     * 
-     * @param startTime
-     * @param endTime
+     * Generates the operational profile given a start time and end time
+     * @param startTime the start time
+     * @param endTime the end time
      * 
      * @return the operational profile as a single string
      */
@@ -83,8 +83,8 @@ public class SecurityLogManager {
     }
     
     /**
-     * 
-     * @param userID
+     * Generates the user report
+     * @param userID the user name of the user to generate the report for
      * 
      * @return the user report as a single string
      */
