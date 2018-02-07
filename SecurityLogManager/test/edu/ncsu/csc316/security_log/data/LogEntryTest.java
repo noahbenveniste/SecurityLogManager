@@ -4,8 +4,16 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+/**
+ * Test class for LogEntry
+ * 
+ * @author Noah Benveniste
+ */
 public class LogEntryTest {
 
+    /**
+     * Tests compareTo()
+     */
     @Test
     public void testCompareTo() {
         LogEntry l1 = new LogEntry("quhundley", "07/18/2015 07:57:42PM", "sort", "ICD-9 Code 196");

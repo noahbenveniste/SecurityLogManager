@@ -394,7 +394,7 @@ public class ArrayListTest {
     }
     
     /**
-     * 
+     * Tests growArray()
      */
     @Test
     public void testGrowArray() {
@@ -421,7 +421,7 @@ public class ArrayListTest {
     }
     
     /**
-     * 
+     * Tests addAll()
      */
     @Test
     public void testAddAll() {

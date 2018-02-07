@@ -12,16 +12,18 @@ import edu.ncsu.csc316.security_log.data.TimeStamp;
 import edu.ncsu.csc316.security_log.io.SecurityLogIO;
 
 /**
+ * Test class for LogEntryList
  * 
  * @author Noah Benveniste
  */
 public class LogEntryListTest {
-    /** */
+    /** List to be reused in tests*/
     private LogEntryList logs;
     
     /**
-     * @throws IOException 
+     * Sets up the manager object and list to be reused in tests
      * 
+     * @throws IOException if input file is badly formatted 
      */
     @Before
     public void setUp() throws IOException {
@@ -35,7 +37,7 @@ public class LogEntryListTest {
     }
     
     /**
-     * 
+     * Tests firstInstanceOf()
      */
     @Test
     public void testFirstInstanceOf() {
@@ -66,7 +68,7 @@ public class LogEntryListTest {
     }
 
     /**
-     * 
+     * tests lastInstanceOf()
      */
     @Test
     public void testLastInstanceOf() {
@@ -93,4 +95,5 @@ public class LogEntryListTest {
         assertEquals(15, logs.lastInstanceOf(new TimeStamp("11/20/2017 11:38:22AM")));
         assertEquals(14, logs.lastInstanceOf(new TimeStamp("11/20/2017 11:38:21AM")));
     }
+    
 }

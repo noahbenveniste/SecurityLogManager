@@ -1,6 +1,5 @@
 package edu.ncsu.csc316.security_log.manager;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import edu.ncsu.csc316.security_log.data.LogCounter;

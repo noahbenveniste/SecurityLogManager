@@ -7,13 +7,13 @@ import org.junit.Test;
 import edu.ncsu.csc316.security_log.util.LogCounterList;
 
 /**
- * 
+ * Test class for LogCounter
  * @author Noah Benveniste
  */
 public class LogCounterTest {
 
     /**
-     * 
+     * Tests equals()
      */
     @Test
     public void testEquals() {

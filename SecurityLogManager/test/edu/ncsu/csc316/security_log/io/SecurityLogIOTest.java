@@ -11,14 +11,15 @@ import edu.ncsu.csc316.security_log.data.LogEntry;
 import edu.ncsu.csc316.security_log.util.LogEntryList;
 
 /**
- * 
+ * Test class for SecurityLogIO
  * @author Noah Benveniste
  */
 public class SecurityLogIOTest {
 
     /**
-     * @throws IOException 
+     * Tests readLogEntriesFromFile()
      * 
+     * @throws IOException if input file is formatted poorly
      */
     @Test
     public void testReadLogEntriesFromFile() throws IOException {

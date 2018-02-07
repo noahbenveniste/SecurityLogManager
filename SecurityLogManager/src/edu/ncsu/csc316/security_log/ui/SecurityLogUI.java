@@ -41,6 +41,7 @@ public class SecurityLogUI {
                 System.out.println(manager.getUserReport(userName));
             }
         }
+        s.close();
     }
     
 }

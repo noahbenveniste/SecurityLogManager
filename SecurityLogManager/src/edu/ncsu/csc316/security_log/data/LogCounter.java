@@ -1,8 +1,10 @@
 package edu.ncsu.csc316.security_log.data;
 
 /**
+ * An object used to keep track of the number of log entries with unique
+ * action/resource pairs when generating the operational profile.
+ * 
  * @author Noah Benveniste
- *
  */
 public class LogCounter implements Comparable<LogCounter> {
 
@@ -11,15 +13,15 @@ public class LogCounter implements Comparable<LogCounter> {
     
     /** Count of a specific type of log entry with a given action and resource */
     private int freq;
-    /** */
+    /** The action associated with the log */
     private String action;
-    /** */
+    /** The resource associated with the log */
     private String resource;
     
     /**
-     * 
-     * @param action
-     * @param resource
+     * Constructs a log counter given a unique action/resource pair
+     * @param action the action associated with the log
+     * @param resource the resource associated with the log
      */
     public LogCounter( String action, String resource ) {
         this.action = action;
@@ -28,14 +30,16 @@ public class LogCounter implements Comparable<LogCounter> {
     }
     
     /**
-     * 
+     * Increments the total number of logs for a given section of the list
+     * when the operational profile is generated
      */
     public static void incrementTotalLogEntryCount() {
         totalLogEntryCount++;
     }
     
     /**
-     * 
+     * Used to increment the frequency of a specific action/resource pair encountered
+     * in the list of log entries
      */
     public void incrementFrequency() {
         this.freq++;
@@ -43,39 +47,41 @@ public class LogCounter implements Comparable<LogCounter> {
     }
     
     /**
-     * 
+     * Resets the total number of log entries viewed. Used when a new operational
+     * profile is generated
      */
     public static void reset() {
         totalLogEntryCount = 0;
     }
     
     /**
-     * 
-     * @return
+     * Gets the action assigned to the counter
+     * @return the action
      */
     public String getAction() {
         return this.action;
     }
     
     /**
-     * 
-     * @return
+     * Gets the resource assigned to the counter
+     * @return the resource
      */
     public String getResource() {
         return this.resource;
     }
     
     /**
-     * 
-     * @return
+     * Gets the frequency of the action/resource pair
+     * @return the frequency
      */
     public int getFrequency() {
         return this.freq;
     }
     
     /**
-     * 
-     * @return
+     * Calculates the percentage of logs in the specified section of the
+     * list that have this action and resource
+     * @return the percentage
      */
     public double calculatePercentage() {
         if ( totalLogEntryCount != 0 ) {
@@ -86,7 +92,11 @@ public class LogCounter implements Comparable<LogCounter> {
     }
     
     /**
-     * 
+     * Compares a log counter with another first on frequency, action
+     * and resource
+     * @param other the other LogCounter to compare
+     * @return a negative value if this counter lexicographically precedes other,
+     * vice versa a positive value, or zero if the counters are equivalent 
      */
     @Override
     public int compareTo( LogCounter other ) {
@@ -103,9 +113,9 @@ public class LogCounter implements Comparable<LogCounter> {
     }
     
     /**
-     * 
-     * @param other
-     * @return
+     * Checks if two counters are equal across all fields
+     * @param other the other counter to check
+     * @return true if this and other are equivalent, false otherwise
      */
     @Override
     public boolean equals( Object obj ) {
@@ -117,7 +127,8 @@ public class LogCounter implements Comparable<LogCounter> {
     }
     
     /**
-     * 
+     * Generates a string representation of the counter
+     * @return the string
      */
     public String toString() {
         StringBuilder sb = new StringBuilder();
