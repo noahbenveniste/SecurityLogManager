@@ -114,7 +114,7 @@ public class LogCounter implements Comparable<LogCounter> {
     
     /**
      * Checks if two counters are equal across all fields
-     * @param other the other counter to check
+     * @param obj the other counter to check
      * @return true if this and other are equivalent, false otherwise
      */
     @Override

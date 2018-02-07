@@ -237,10 +237,10 @@ public class ArrayList<E extends Comparable<? super E>> {
     }
     
     /**
-     * 
+     * Searches for an element in the list
      * Precondition: Only functions properly if the list is maintained in sorted order
-     * @param e
-     * @return
+     * @param e the element to search for
+     * @return the index of the element, or -1 if not found
      */
     public int contains(E e) {
         if (size == 0) {
@@ -276,17 +276,17 @@ public class ArrayList<E extends Comparable<? super E>> {
     }
     
     /**
-     * Sorts the array.
+     * Sorts the list in ascending order
      */
     public void sort()  {
         quickSort(0, this.size - 1);
     }
     
     /**
-     * 
+     * A recursive quick sort algorithm.
      * Source of algorithm explanation: https://www.cp.eng.chula.ac.th/~vishnu/datastructure/QuickSort.pdf
-     * @param low
-     * @param high
+     * @param low the lowest index of the subarray
+     * @param high the highest index of the subarray
      */
     private void quickSort(int low, int high) {
         // Base case 1: sub array with fewer than two elements
@@ -342,8 +342,8 @@ public class ArrayList<E extends Comparable<? super E>> {
     }
     
     /**
-     * 
-     * @param in
+     * Combines a passed list with this list
+     * @param in the list to combine this list with
      */
     public void addAll(ArrayList<E> in) {
         for (int i = 0; i < in.size(); i++) {

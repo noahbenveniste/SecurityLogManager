@@ -10,20 +10,20 @@ import org.junit.Test;
  */
 public class TimeStampTest {
     /** test string 1*/
-    private static final String t1 = "04/26/2017 12:33:15PM";
+    private static final String T1 = "04/26/2017 12:33:15PM";
     /** test string 2*/
-    private static final String t2 = "11/20/2017 11:38:22AM";
+    private static final String T2 = "11/20/2017 11:38:22AM";
     /** test string 3*/
-    private static final String t3 = "08/04/2016 06:57:34AM";
+    private static final String T3 = "08/04/2016 06:57:34AM";
     /** test string 4*/
-    private static final String t4 = "04/26/2017 12:33:15PM";
+    private static final String T4 = "04/26/2017 12:33:15PM";
     
     /**
      * Tests constructor
      */
     @Test
     public void testTimeStamp() {
-        TimeStamp ts1 = new TimeStamp(t1);
+        TimeStamp ts1 = new TimeStamp(T1);
         assertEquals(20170426123315L, ts1.getVal());
 
         //TimeStamp ts5 = new TimeStamp(t5);
@@ -41,10 +41,10 @@ public class TimeStampTest {
      */
     @Test
     public void testEquals() {
-        TimeStamp ts1 = new TimeStamp(t1);
-        TimeStamp ts2 = new TimeStamp(t2);
-        TimeStamp ts3 = new TimeStamp(t3);
-        TimeStamp ts4 = new TimeStamp(t4);
+        TimeStamp ts1 = new TimeStamp(T1);
+        TimeStamp ts2 = new TimeStamp(T2);
+        TimeStamp ts3 = new TimeStamp(T3);
+        TimeStamp ts4 = new TimeStamp(T4);
         assertFalse(ts1.equals(ts2));
         assertFalse(ts2.equals(ts3));
         assertFalse(ts3.equals(ts4));
