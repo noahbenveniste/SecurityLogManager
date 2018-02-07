@@ -9,7 +9,7 @@ import org.junit.Test;
 import edu.ncsu.csc316.security_log.io.SecurityLogIO;
 
 /**
- * 
+ * Test class for SecurityLogManager
  * @author Noah Benveniste
  */
 public class SecurityLogManagerTest {
@@ -42,7 +42,7 @@ public class SecurityLogManagerTest {
     
     /**
      * Tests generateOperationalProfile()
-     * @throws IOException 
+     * @throws IOException if the file is poorly formatted
      */
     @Test
     public void testGenerateOperationalProfile() throws IOException {
@@ -68,8 +68,8 @@ public class SecurityLogManagerTest {
     }
     
     /**
-     * @throws IOException 
-     * 
+     * Tests getUserReport()
+     * @throws IOException if the file is poorly formatted
      */
     @Test
     public void testGetUserReport() throws IOException {

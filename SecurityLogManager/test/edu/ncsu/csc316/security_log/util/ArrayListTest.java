@@ -312,7 +312,7 @@ public class ArrayListTest {
     }
     
     /**
-     * 
+     * Tests contains()
      */
     @Test
     public void testContains() {

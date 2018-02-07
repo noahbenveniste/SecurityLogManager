@@ -94,17 +94,17 @@ public class ArrayList<E extends Comparable<? super E>> {
     }
     
     /**
-     * 
-     * @param e
+     * Appends an element to the end of the list
+     * @param e the element to add
      */
     public void add(E e) {
         this.add(this.size, e);
     }
     
     /**
-     * 
-     * @param e
-     * @return
+     * Adds an element to the list in sorted order
+     * @param e the element to add
+     * @return true if it was added successfully, false otherwise
      */
     public boolean addSorted(E e) {
         // Special case of adding to an empty list
@@ -216,6 +216,7 @@ public class ArrayList<E extends Comparable<? super E>> {
     /**
      * Gets an element at a specified index
      * 
+     * @param idx the index to get the element at
      * @return the element at the specified index
      * @throws IndexOutOfBoundsException
      *             if the specified index is out of bounds

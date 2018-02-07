@@ -10,13 +10,16 @@ import edu.ncsu.csc316.security_log.util.LogCounterList;
 import edu.ncsu.csc316.security_log.util.LogEntryList;
 
 /**
- * 
+ * Manager class that contains methods for primary operations that program performs.
  * @author Noah Benveniste
  */
 public class SecurityLogManager {
     
+    /** Keeps track of log entries in file */
     private LogEntryList logEntryList;
+    /** Counts the number of log entries with unique action/resource */
     private LogCounterList logCounterList;
+    /** Used to read in log entries from file */
     private SecurityLogIO io;
     
     /**

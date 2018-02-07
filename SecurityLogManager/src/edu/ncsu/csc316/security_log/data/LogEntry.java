@@ -1,7 +1,8 @@
 package edu.ncsu.csc316.security_log.data;
 
 /**
- * 
+ * A class that represents a log entry. Stores the user, time stamp, action
+ * and resource associated with the log entry
  * @author Noah Benveniste
  */
 public class LogEntry implements Comparable<LogEntry> {
@@ -12,10 +13,11 @@ public class LogEntry implements Comparable<LogEntry> {
     private TimeStamp timeStamp;
     
     /**
-     * 
-     * @param action
-     * @param resource
-     * @param t
+     * Constructs a LogEntry
+     * @param user the user associated with the log entry
+     * @param timeStamp the time at which the log entry was made
+     * @param action the action the user took
+     * @param resource the resource that was affected by the action
      */
     public LogEntry( String user, String timeStamp, String action, String resource ) {
         this.user = user;
@@ -25,38 +27,41 @@ public class LogEntry implements Comparable<LogEntry> {
     }
     
     /**
-     * 
-     * @return
+     * Gets the user
+     * @return the user
      */
     public String getUser() {
         return this.user;
     }
     
     /**
-     * 
-     * @return
+     * Gets the action
+     * @return the action
      */
     public String getAction() {
         return this.action;
     }
     
     /**
-     * 
-     * @return
+     * Gets the resource
+     * @return the resource
      */
     public String getResource() {
         return this.resource;
     }
     /**
-     * 
-     * @return
+     * Gets the time stamp
+     * @return the time stamp
      */
     public TimeStamp getTimeStamp() {
         return this.timeStamp;
     }
     
     /**
-     * 
+     * Compares two log entries
+     * @param other the other log entry to compare
+     * @return a negative value if this entry is lexicographically greater than
+     * the other, a positive value if vice versa, zero if the two are equal
      */
     @Override
     public int compareTo( LogEntry other ) {
@@ -74,7 +79,8 @@ public class LogEntry implements Comparable<LogEntry> {
     }
 
     /**
-     * 
+     * Checks if two log entries are equivalent
+     * @return true if equivalent, false otherwise
      */
     @Override
     public boolean equals(Object obj) {

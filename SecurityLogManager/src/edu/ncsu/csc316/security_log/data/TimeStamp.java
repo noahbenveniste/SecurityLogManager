@@ -1,7 +1,7 @@
 package edu.ncsu.csc316.security_log.data;
 
 /**
- * 
+ * A class that represents a time stamp of the form "mm/dd/yyyy hh:mm:ssXX", XX = AM | PM
  * @author Noah Benveniste
  */
 public class TimeStamp implements Comparable<TimeStamp> {
@@ -17,8 +17,8 @@ public class TimeStamp implements Comparable<TimeStamp> {
     private long val;
     
     /**
-     * 
-     * @param s
+     * Parses a time stamp string into a single long integer
+     * @param s of the form "mm/dd/yyyy hh:mm:ssXX", XX = AM | PM
      */
     public TimeStamp( String s ) {
         this.originalString = s;
@@ -81,8 +81,8 @@ public class TimeStamp implements Comparable<TimeStamp> {
     }
     
     /**
-     * 
-     * @return
+     * Gets the integer value that the time stamp was parsed to
+     * @return the integer representing the time stamp
      */
     public long getVal() {
         return this.val;
@@ -115,12 +115,19 @@ public class TimeStamp implements Comparable<TimeStamp> {
 //        return isAM;
 //    }
 //    
+    /**
+     * Gets the original time stamp string
+     * @return the original string
+     */
     public String getOriginalString() {
         return this.originalString;
     }
 
     /**
-     * 
+     * Compares two time stamps
+     * @param other the time stamp to compare to
+     * @return a negative value if this time came before the other time,
+     * positive if vice versa, zero if they are the same time
      */
     @Override
     public int compareTo( TimeStamp other ) {
@@ -156,6 +163,10 @@ public class TimeStamp implements Comparable<TimeStamp> {
 //        }
     }
 
+    /**
+     * Checks if two time stamps are equivalent
+     * @return true if they are, false otherwise
+     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
